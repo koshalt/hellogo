@@ -11,6 +11,11 @@ import (
 
 var e, f, g bool
 
+type Vertex struct {
+	X int
+	Y int
+}
+
 func main() {
 	rand.Seed(time.Now().UTC().UnixNano())
 	fmt.Println("hello, world", time.Now())
@@ -33,6 +38,10 @@ func main() {
 
 	fmt.Println("switching")
 	switchGo()
+
+	deferPrint(10)
+
+	fmt.Println(Vertex{1, 2})
 }
 
 func add(a int, b int) int {
@@ -79,4 +88,9 @@ func switchGo() {
 	default:
 		fmt.Println("%s", os)
 	}
+}
+
+func deferPrint(a int) {
+	defer fmt.Println(a)
+	fmt.Println("After")
 }
